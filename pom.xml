@@ -15,12 +15,17 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itext7-core</artifactId>
             <version>7.0.4</version>
             <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bhaskarkh</groupId>
+            <artifactId>PdfInvoiceCreator</artifactId>
+            <version>1.0.1</version>
         </dependency>
 
     </dependencies>

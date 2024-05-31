@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
-public class generatePdf {
+public class generatePdf_AI {
     public static void main(String[] args) throws FileNotFoundException {
         String chemin = "facture.pdf";
         PdfWriter ecrivainPdf = new PdfWriter(chemin);
@@ -28,7 +28,6 @@ public class generatePdf {
 
         // Seller Information
         Paragraph infosVendeur = new Paragraph()
-                .add("Informations sur le Vendeur:\n")
                 .add("Société: ABC Corporation\n")
                 .add("Adresse: 123 Rue Principale\n")
                 .add("Ville: Villeville\n")
@@ -40,7 +39,6 @@ public class generatePdf {
 
         // Buyer Information
         Paragraph infosAcheteur = new Paragraph()
-                .add("\nInformations sur l'Acheteur:\n")
                 .add("Nom: Jean Dupont\n")
                 .add("Adresse: 456 Avenue des Chênes\n")
                 .add("Ville: Autreville\n")
