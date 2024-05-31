@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pdf_READY_toUse {
+
+    //TODO : see WTF is going on with this, NB : it generated the pdf successfully but it doesnt open, even in a PDF READER ONLIINE
     public static void main(String[] args) throws FileNotFoundException {
         LocalDate ld= LocalDate.now();
         String pdfName= ld+".pdf";
@@ -43,17 +45,15 @@ public class Pdf_READY_toUse {
         //Product Start
         ProductTableHeader productTableHeader=new ProductTableHeader();
         cepdf.createTableHeader(productTableHeader);
-        List<Product> productList=cepdf.getDummyProductList();
+        List<Product> productList= new ArrayList<>();
+        productList.add(new Product("Apples",5,150));
+        productList.add(new Product("Watches",5,150));
+        productList.add(new Product("Tvs",5,150));
+        productList.add(new Product("Phones",5,150));
         productList=cepdf.modifyProductList(productList);
         cepdf.createProduct(productList);
         //Product End
 
-        //Term and Condition Start
-        List<String> TncList=new ArrayList<>();
-        TncList.add("1. The Seller shall not be liable to the Buyer directly or indirectly for any loss or damage suffered by the Buyer.");
-        TncList.add("2. The Seller warrants the product for one (1) year from the date of shipment");
-
-        // Term and condition end
         System.out.println("pdf genrated");
     }
 }

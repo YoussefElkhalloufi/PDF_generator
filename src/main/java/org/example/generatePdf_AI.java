@@ -10,6 +10,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class generatePdf_AI {
         Paragraph infosFacture = new Paragraph()
                 .add("\nInformations sur la Facture:\n")
                 .add("Numéro: 12345\n")
-                .add("Date: 31/05/2024\n")
+                .add("Date: " + LocalDate.now()+"\n")
                 .setTextAlignment(TextAlignment.LEFT)
                 .setFontSize(12);
 
