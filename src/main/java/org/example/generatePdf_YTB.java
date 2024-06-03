@@ -31,13 +31,19 @@ public class generatePdf_YTB {
         float twoColWidth[] = {twocol150, twocol};
         float fullWidth[] = {threeCol*3};
 
-        Table table = new Table(twoColWidth);
+        Paragraph paragraph = new Paragraph();
+        Paragraph copyRight = new Paragraph();
+        copyRight.add("Copyright © by FacturEase 2024").setTextAlignment(TextAlignment.CENTER);
+        doc.add(copyRight);
+
+
+        Table table = new Table(new float[]{500,220});
         table.addCell(new Cell().add("Facture").setFontSize(20f).setBorder(Border.NO_BORDER).setBold());
 
-            Table nestedTable = new Table(new float[]{twocol/2, twocol/2});
-                nestedTable.addCell(new Cell().add("Facture N°:").setBold().setBorder(Border.NO_BORDER));
+            Table nestedTable = new Table(new float[]{100, 185});
+                nestedTable.addCell(new Cell().add("N° :").setBold().setBorder(Border.NO_BORDER));
                 nestedTable.addCell(new Cell().add("11/5495/330").setBorder(Border.NO_BORDER));
-                nestedTable.addCell(new Cell().add("Date Facture").setBold().setBorder(Border.NO_BORDER));
+                nestedTable.addCell(new Cell().add("Date :").setBold().setBorder(Border.NO_BORDER));
                 nestedTable.addCell(new Cell().add(String.valueOf(LocalDate.now())).setBorder(Border.NO_BORDER));
 
         table.addCell(new Cell().add(nestedTable).setBorder(Border.NO_BORDER));
@@ -47,56 +53,39 @@ public class generatePdf_YTB {
         divider.setBorder(grayBorder);
 
         doc.add(table);
+        doc.add(paragraph);
         doc.add(divider);
 
-        //Infos vendeur
-        Paragraph infosVendeur = new Paragraph()
-                .add(new Text("Société : ").setBold())
-                .add("FacturEase\n")
-                .add(new Text("Adresse : ").setBold())
-                .add("123 Rue Principale\n")
-                .add(new Text("Ville : ").setBold())
-                .add("Oujda\n")
-                .add(new Text("Pays : ").setBold())
-                .add("XYZ\n")
-                .setTextAlignment(TextAlignment.LEFT)
-                .setFontSize(12);
+        paragraph.add("\n");
+        doc.add(paragraph);
+
+        Table tableInfos = new Table(new float[]{360f,360f});
+        Table infosFacture = new Table(new float[]{60f, 210f});
+        infosFacture.addCell(new Cell().add("Société :").setBold().setBorder(Border.NO_BORDER));
+        infosFacture.addCell(new Cell().add("Maroc telecom Corporation").setBorder(Border.NO_BORDER));
+        infosFacture.addCell(new Cell().add("Adresse :").setBold().setBorder(Border.NO_BORDER));
+        infosFacture.addCell(new Cell().add("72 hay el mohammadi n° 21 el aioun sidi mellouck").setBorder(Border.NO_BORDER));
+        infosFacture.addCell(new Cell().add("Ville :").setBold().setBorder(Border.NO_BORDER));
+        infosFacture.addCell(new Cell().add("El aioun sidi mellouck taourirt").setBorder(Border.NO_BORDER));
+        infosFacture.addCell(new Cell().add("Pays :").setBold().setBorder(Border.NO_BORDER));
+        infosFacture.addCell(new Cell().add("Maroc").setBorder(Border.NO_BORDER));
 
 
 
-        //Infos Acheteur
-        Paragraph infosAcheteur = new Paragraph()
-                .add(new Text("Nom : ").setBold())
-                .add("Jean Dupont\n")
-                .add(new Text("Cin : ").setBold())
-                .add("FC59627\n")
-                .add(new Text("Telephone : ").setBold())
-                .add("+212 6 27 86 02 25\n")
-                .add(new Text("Adresse : ").setBold())
-                .add("456 Avenue des Chênes\n")
-                .setTextAlignment(TextAlignment.RIGHT)
-                .setFontSize(12);
+        Table infosAcheteur = new Table(new float[]{100f, 350f});
+        infosAcheteur.addCell(new Cell().add("Nom :") .setBold().setBorder(Border.NO_BORDER));
+        infosAcheteur.addCell(new Cell().add("Youssef el khalloufi").setBorder(Border.NO_BORDER));
+        infosAcheteur.addCell(new Cell().add("Adresse :").setBold().setBorder(Border.NO_BORDER));
+        infosAcheteur.addCell(new Cell().add("El aioun sidi mellouck").setBorder(Border.NO_BORDER));
+        infosAcheteur.addCell(new Cell().add("Telephone :").setBold().setBorder(Border.NO_BORDER));
+        infosAcheteur.addCell(new Cell().add("06-27-86-02-25").setBorder(Border.NO_BORDER));
+        infosAcheteur.addCell(new Cell().add("CIN :").setBold().setBorder(Border.NO_BORDER));
+        infosAcheteur.addCell(new Cell().add("FC59627").setBorder(Border.NO_BORDER));
 
-        // Create a table with two columns
-        Table infoTable = new Table(new float[]{twocol150, twocol});
-        infoTable.setWidthPercent(100);
+        tableInfos.addCell(new Cell().add(infosAcheteur).setBorder(Border.NO_BORDER));
+        tableInfos.addCell(new Cell().add(infosFacture));
 
-        // Create the first cell containing the seller's information
-        Cell vendeurCell = new Cell().add(infosVendeur).setTextAlignment(TextAlignment.LEFT).setBorder(Border.NO_BORDER);
-        infoTable.addCell(vendeurCell);
-
-        // Create the second cell containing the buyer's information
-        Cell acheteurCell = new Cell().add(infosAcheteur).setTextAlignment(TextAlignment.LEFT).setBorder(Border.NO_BORDER);
-        infoTable.addCell(acheteurCell).setTextAlignment(TextAlignment.LEFT);
-
-        // Add the table to the document
-        doc.add(infoTable);
-
-
-
-
-
-
+        doc.add(tableInfos);
 
         doc.close();
     }
