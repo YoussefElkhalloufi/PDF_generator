@@ -76,33 +76,26 @@ public class generatePdf_AI {
         spaces.add("\n");
         document.add(spaces);
 
-        float threeCol =190f;
-        float twocol = 285f;
-        float twocol150 = twocol + 150 ;
-        float twoColWidth[] = {twocol150, twocol};
-        float fullWidth[] = {threeCol*3};
-
         Table tableInfos = new Table(new float[]{450f,270f});
-        Table infosFacture = new Table(new float[]{100f, 170f});
-        infosFacture.addCell(new Cell().add("Facture N° :").setBold().setBorder(Border.NO_BORDER));
-        infosFacture.addCell(new Cell().add(String.valueOf(numFact)).setBorder(Border.NO_BORDER));
-        infosFacture.addCell(new Cell().add("Date :").setBold().setBorder(Border.NO_BORDER));
-        infosFacture.addCell(new Cell().add(LocalDate.now().toString()).setBorder(Border.NO_BORDER));
 
+        Table infosFacture = new Table(new float[]{100f, 170f});
+            infosFacture.addCell(new Cell().add("Facture N° :").setBold().setBorder(Border.NO_BORDER));
+            infosFacture.addCell(new Cell().add(String.valueOf(numFact)).setBorder(Border.NO_BORDER));
+            infosFacture.addCell(new Cell().add("Date :").setBold().setBorder(Border.NO_BORDER));
+            infosFacture.addCell(new Cell().add(LocalDate.now().toString()).setBorder(Border.NO_BORDER));
 
 
         Table infosAcheteur = new Table(new float[]{105f, 345f});
-        infosAcheteur.addCell(new Cell().add("CIN :").setBold().setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add(cin).setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add("Nom complet :") .setBold().setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add(nomComplet).setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add("Adresse :").setBold().setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add(adresse).setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add("Telephone :").setBold().setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add(tel).setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add("E-mail :").setBold().setBorder(Border.NO_BORDER));
-        infosAcheteur.addCell(new Cell().add(mail).setBorder(Border.NO_BORDER));
-
+            infosAcheteur.addCell(new Cell().add("CIN :").setBold().setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add(cin).setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add("Nom complet :") .setBold().setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add(nomComplet).setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add("Adresse :").setBold().setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add(adresse).setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add("Telephone :").setBold().setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add(tel).setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add("E-mail :").setBold().setBorder(Border.NO_BORDER));
+            infosAcheteur.addCell(new Cell().add(mail).setBorder(Border.NO_BORDER));
 
 
         tableInfos.addCell(new Cell().add(infosAcheteur).setBorder(Border.NO_BORDER));
@@ -114,11 +107,10 @@ public class generatePdf_AI {
 
 
         Table table = new Table(new float[]{330f,90f,150f,150f});
-        //table.setWidthPercent(100);
-        table.addCell(new Cell().add("Désignation").setTextAlignment(TextAlignment.CENTER).setBold());
-        table.addCell(new Cell().add("Quantité").setTextAlignment(TextAlignment.CENTER).setBold());
-        table.addCell(new Cell().add("Prix unitaire").setTextAlignment(TextAlignment.CENTER).setBold());
-        table.addCell(new Cell().add("Montant total").setTextAlignment(TextAlignment.CENTER).setBold());
+            table.addCell(new Cell().add("Désignation").setTextAlignment(TextAlignment.CENTER).setBold());
+            table.addCell(new Cell().add("Quantité").setTextAlignment(TextAlignment.CENTER).setBold());
+            table.addCell(new Cell().add("Prix unitaire").setTextAlignment(TextAlignment.CENTER).setBold());
+            table.addCell(new Cell().add("Montant total").setTextAlignment(TextAlignment.CENTER).setBold());
 
 
         for (Produit produit : produits) {
@@ -127,31 +119,33 @@ public class generatePdf_AI {
             table.addCell(new Cell().add(String.valueOf(produit.getPrix())).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(String.valueOf(produit.getTotal())).setTextAlignment(TextAlignment.CENTER));
         }
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("Montant total HT "));
-        table.addCell(new Cell().add(String.valueOf(totalFac)).setTextAlignment(TextAlignment.CENTER));
 
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("Remise " + remisePercentage +" %"));
-        table.addCell(new Cell().add(String.valueOf(remiseVal)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("Montant total HT "));
+            table.addCell(new Cell().add(String.valueOf(totalFac)).setTextAlignment(TextAlignment.CENTER));
 
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("Net commercial"));
-        table.addCell(new Cell().add(String.valueOf(netComm)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("Remise " + remisePercentage +" %"));
+            table.addCell(new Cell().add(String.valueOf(remiseVal)).setTextAlignment(TextAlignment.CENTER));
 
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("Tva " + tvaPercentage + " %"));
-        table.addCell(new Cell().add(String.valueOf(tvaVal)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("Net commercial"));
+            table.addCell(new Cell().add(String.valueOf(netComm)).setTextAlignment(TextAlignment.CENTER));
 
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-        table.addCell(new Cell().add("Net à payer TTC").setBold());
-        table.addCell(new Cell().add(totalTTC+" DH").setTextAlignment(TextAlignment.CENTER).setBold());
-        document.add(spaces);
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("Tva " + tvaPercentage + " %"));
+            table.addCell(new Cell().add(String.valueOf(tvaVal)).setTextAlignment(TextAlignment.CENTER));
+
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add("Net à payer TTC").setBold());
+            table.addCell(new Cell().add(totalTTC+" DH").setTextAlignment(TextAlignment.CENTER).setBold());
+
+            document.add(spaces);
         document.add(table);
 
         // Footer: Seller Name and Signature Space
