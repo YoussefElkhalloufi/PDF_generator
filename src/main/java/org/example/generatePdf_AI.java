@@ -158,6 +158,8 @@ public class generatePdf_AI {
         Paragraph footer = new Paragraph("Nom du Vendeur: [Espace pour Signature]").setTextAlignment(TextAlignment.RIGHT).setFontSize(12);
         document.add(footer);
 
+        //TODO : see if l'entreprise a quoi la base ( service ou produit ), si oui 3ed dir li lteht
+        //TODO : see if la facture mentionné a des services ( le type dialha )
         document.close();
     }
 }
